@@ -7,10 +7,10 @@
     response.end('Hello world');
 };
 module.exports= router;*/
-const url = require('url');
+//const url = require('url');
 const Pag1 = require('../controllers/pag1');
 const Pag2 = require('../controllers/pag2');
-const modelP1 = require ('../models/modelPag1.js')
+const Search = require('../controllers/search');
 const router = (req, res) => {
     if (req.url.startsWith ('/pag1')) {
         var result = Pag1(req);
@@ -18,6 +18,9 @@ const router = (req, res) => {
     } else if (req.url == '/pag2') {
         var result = Pag2(req);
         res.end(result);
+    }else if(req.url.startsWith('/search')){
+        var result = Search(req);
+        res.end(result); 
     }
 }
 
